@@ -23,12 +23,14 @@ def get_player(search_term):
                 res += name + "\n"
             return res
 
-    if len(name) == 0:
+    if (len(name) == 0 and len(search_terms) > 1):
         first = [name for name in data if search_terms[0].lower() in "".join(name.lower().split(" "))]
         second = [name for name in data if search_terms[1].lower() in "".join(name.lower().split(" "))]
-        if (first[0] == second[0]):
-            name = first[0]
-        else: return "9999999"
+
+        for second_name in second:
+            if second_name in first:
+                name = [second_name]
+                print(name)
 
     if len(name) == 0:
         return "9999999"
