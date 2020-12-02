@@ -1,9 +1,11 @@
 from flask import Flask
+from flask_cors import CORS
 import requests
 import json
 
 url = "https://www.futbin.com/21/playerPrices?player="
 app = Flask(__name__)
+CORS(app)
 data = {}
 
 with open('data.json') as json_file:
